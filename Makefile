@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = iface1.0.0
-DISTDIR = /home/developer/trafinject-2/iface/.tmp/iface1.0.0
+DISTDIR = /home/developer/trafinject-2/.tmp/iface1.0.0
 LINK          = g++
 LFLAGS        = -m32 -Wl,-rpath,/opt/Qt5_5_0/5.5/gcc -Wl,-rpath,/opt/Qt5_5_0/5.5/gcc/lib
 LIBS          = $(SUBLIBS) -L/usr/local/lib -lcurl -lxml2 -L/opt/Qt5_5_0/5.5/gcc/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -635,7 +635,7 @@ moc_iface.cpp: /opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5_5_0/5.5/gcc/include/QtCore/qprocess.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtCore/QObject \
 		iface.h
-	/opt/Qt5_5_0/5.5/gcc/bin/moc $(DEFINES) -I/opt/Qt5_5_0/5.5/gcc/mkspecs/linux-g++-32 -I/home/developer/trafinject-2/iface -I/opt/Qt5_5_0/5.5/gcc/include -I/opt/Qt5_5_0/5.5/gcc/include/QtWidgets -I/opt/Qt5_5_0/5.5/gcc/include/QtGui -I/opt/Qt5_5_0/5.5/gcc/include/QtCore iface.h -o moc_iface.cpp
+	/opt/Qt5_5_0/5.5/gcc/bin/moc $(DEFINES) -I/opt/Qt5_5_0/5.5/gcc/mkspecs/linux-g++-32 -I/home/developer/trafinject-2 -I/opt/Qt5_5_0/5.5/gcc/include -I/opt/Qt5_5_0/5.5/gcc/include/QtWidgets -I/opt/Qt5_5_0/5.5/gcc/include/QtGui -I/opt/Qt5_5_0/5.5/gcc/include/QtCore iface.h -o moc_iface.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -882,7 +882,56 @@ iface.o: iface.cpp iface.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtCore/QProcess \
 		/opt/Qt5_5_0/5.5/gcc/include/QtCore/qprocess.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtCore/QObject \
-		ui_iface.h
+		ui_iface.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtCore/QVariant \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QAction \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qaction.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QApplication \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qapplication.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qguiapplication.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qinputmethod.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QButtonGroup \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QHeaderView \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qheaderview.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qframe.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qvalidator.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qslider.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qstyle.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qtabbar.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qrubberband.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QMenuBar \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qmenubar.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qmenu.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QPushButton \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qpushbutton.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qabstractbutton.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QStatusBar \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qstatusbar.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QTextBrowser \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qtextbrowser.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qtextedit.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextdocument.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextcursor.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextformat.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qpen.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QToolBar \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qtoolbar.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o iface.o iface.cpp
 
 moc_iface.o: moc_iface.cpp 

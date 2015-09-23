@@ -67,6 +67,8 @@ public:
 public:
     Ui::iface *ui;    
 
+private:
+    void _get_tID();
 
 private slots:
     void handle_pushButton();
