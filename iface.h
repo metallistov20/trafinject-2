@@ -39,6 +39,7 @@ private slots:
     void readStdOut()
     {
         //std::cout << "[COUT_]" << QString(process->readAllStandardOutput()).toUtf8().constData() << std::endl;
+        //.data.append( QByteArray("[COUskyT_]").constData() );
         data.append( process->readAllStandardOutput()).toUtf8().constData();
     }
 
@@ -69,6 +70,7 @@ public:
 
 private:
     void _get_tID();
+    void _do_fake_data();
 
 private slots:
     void handle_pushButton();
