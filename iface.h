@@ -29,6 +29,9 @@ public:
         connect(process,SIGNAL(started()),this,SLOT(onStarted()));
         connect(process,SIGNAL(finished(int)),this,SLOT(onFinished(int)));
 
+        // collect STDOUT into clean buffer
+        //.data.clear();
+
         process->start(program);
 
     }
@@ -70,7 +73,8 @@ public:
 
 private:
     void _get_tID();
-    void _do_fake_data();
+    void _do_default_data();
+    void _get_real_data();
 
 private slots:
     void handle_pushButton();
@@ -82,7 +86,8 @@ private slots:
     void handle_pushButton_7();
     void handle_pushButton_8();
 
-    void handle_pushButtonExit();
+    void handle_pushButtonExit();    
+    void handle_pushButtonClear();
 
 
 };

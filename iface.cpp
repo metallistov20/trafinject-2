@@ -32,6 +32,10 @@ iface::iface(QWidget *parent) :
 
      connect(ui->pushButtonExit, SIGNAL (released()), this, SLOT (handle_pushButtonExit()));
 
+     connect(ui->pushButtonClear, SIGNAL (released()), this, SLOT (handle_pushButtonClear()));
+
+     _do_default_data();
+
 }
 
 Controller c;
@@ -56,9 +60,6 @@ Controller c;
     ./inject --ipassign --id="$tID" --target="$IP" --ip-addr="$4" --ip-mask="$5" --xml-data=cast.5428E.txt.xml
 
     ./inject --save --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml
-
-
-
 */
 
 
@@ -78,30 +79,56 @@ QString q_tFILE;
 
 QString q_tPRG_PARM;
 
-void iface::_do_fake_data()
+void iface::_do_default_data()
 {
 ////////////////////////////////// garbage code for testiong only. remove when done
         q_tIP.clear();
-        q_tIP.append("192.168.0.148");
+        q_tIP.append("192.168.0.5");
+        ui->lineEdit->setText(q_tIP);
 
         q_tSNMP.clear();
         q_tSNMP.append("SNMP_GRP6");
+        ui->lineEdit_2->setText(q_tSNMP);
 
         q_tACL.clear();
         q_tACL.append("ACL_GRP");
+        ui->lineEdit_3->setText(q_tACL);
 
         q_tXML.clear();
         q_tXML.append("../trafinject-1/cast.5428E.txt.xml");
+        ui->lineEdit_4->setText(q_tXML);
 
         q_tIPADDR.clear();
-        q_tIPADDR.append("192.168.0.149");
+        q_tIPADDR.append("192.168.0.5");
+        ui->lineEdit_5->setText(q_tIPADDR);
 
         q_tIPMASK.clear();
         q_tIPMASK.append("255.255.255.0");
+        ui->lineEdit_6->setText(q_tIPMASK);
 
         q_tFILE.clear();
         q_tFILE.append("firmware.bin");
+        ui->lineEdit_7->setText(q_tFILE);
+
+        ui->lineEdit_8->setText("<empty>");
 ////////////////////////////////// garbage code for testiong only. remove when done
+}
+
+void iface::_get_real_data()
+{
+    q_tIP = ui->lineEdit->text();
+
+    q_tSNMP = ui->lineEdit_2->text();
+
+    q_tACL = ui->lineEdit_3->text();
+
+    q_tXML = ui->lineEdit_4->text();
+
+    q_tIPADDR = ui->lineEdit_5->text();
+
+    q_tIPMASK = ui->lineEdit_6->text();
+
+    q_tFILE = ui->lineEdit_7->text();
 }
 
 void iface::_get_tID()
@@ -130,32 +157,31 @@ void iface::_get_tID()
     }
 
     ////////////////////////////////// garbage code for testiong only. remove when done
-    _do_fake_data();
-
+    //_get_real_data();
 }
 
 void iface::handle_pushButton()
 {
-    ui->statusBar->showMessage("Running cmd <iOpenSite>");
+    ui->statusBar->showMessage("Running cmd <iOpenSite>");    
 
 #if (1)
 
-////////////////////////////////// garbage code for testiong only. remove when done
-_do_fake_data();
-
+    _get_real_data();
+    //c.init("../trafinject-1/inject --open --target=\"192.168.0.148\" --xml-data=../trafinject-1/cast.5428E.txt.xml");
     q_tPRG_PARM.clear();
     q_tPRG_PARM.append("../trafinject-1/inject --open --target=");
     q_tPRG_PARM.append(q_tIP);
     q_tPRG_PARM.append("  --xml-data=");
     q_tPRG_PARM.append(q_tXML);
-        //c.init("../trafinject-1/inject --open --target=\"192.168.0.148\" --xml-data=../trafinject-1/cast.5428E.txt.xml");
 
+    // lauch program, and collect STDOUT
     c.init(q_tPRG_PARM);
 
     //ui->statusBar->showMessage("Finished cmd <iOpenSite>");
     ui->statusBar->showMessage(q_tPRG_PARM);
 
-        ui->textBrowser->append(QString(c.data));
+    ui->textBrowser->clear();
+    ui->textBrowser->append(QString(c.data));
 
         _get_tID();
 #else
@@ -182,6 +208,7 @@ void iface::handle_pushButton_2()
 #if (0)
 //    c.init("../trafinject-1/inject --close --target=\"192.168.0.148\" --xml-data=../trafinject-1/cast.5428E.txt.xml");
 #else
+    _get_real_data();
     q_tPRG_PARM.clear();
     q_tPRG_PARM.append("../trafinject-1/inject --close --target=\"");
     q_tPRG_PARM.append(q_tIP);
@@ -189,8 +216,10 @@ void iface::handle_pushButton_2()
     q_tPRG_PARM.append(q_tXML);
 #endif /* (0) */
 
+    // lauch program, and collect STDOUT
     c.init(q_tPRG_PARM);
 
+    ui->textBrowser->clear();
     ui->textBrowser->append(QString(c.data));
 
     //ui->statusBar->showMessage("Finished cmd <iCloseSite>");
@@ -204,6 +233,7 @@ void iface::handle_pushButton_3()
 #if (0)
 //         ./inject --create --id="$tID" --target="$IP" --community="$SNMP_GRP"  --xml-data=cast.5428E.txt.xml
 #else
+    _get_real_data();
     q_tPRG_PARM.clear();
     q_tPRG_PARM.append("../trafinject-1/inject --create --target=");
     q_tPRG_PARM.append(q_tIP);
@@ -213,8 +243,10 @@ void iface::handle_pushButton_3()
     q_tPRG_PARM.append(q_tSNMP);
 #endif /* (0) */
 
+    // lauch program, and collect STDOUT
     c.init(q_tPRG_PARM);
 
+    ui->textBrowser->clear();
     ui->textBrowser->append(QString(c.data));
 
     //ui->statusBar->showMessage("Finished cmd <iCreateSnmp>");
@@ -228,6 +260,7 @@ void iface::handle_pushButton_4()
 #if (0)
 //    ./inject --ipassign --id="$tID" --target="$IP" --ip-addr="$4" --ip-mask="$5" --xml-data=cast.5428E.txt.xml
 #else
+    _get_real_data();
     q_tPRG_PARM.clear();
     q_tPRG_PARM.append("../trafinject-1/inject --ipassign --target=");
     q_tPRG_PARM.append(q_tIP);
@@ -239,8 +272,11 @@ void iface::handle_pushButton_4()
     q_tPRG_PARM.append(q_tIPMASK);
 #endif /* (0) */
 
+
+    // lauch program, and collect STDOUT
     c.init(q_tPRG_PARM);
 
+    ui->textBrowser->clear();
     ui->textBrowser->append(QString(c.data));
 
     //ui->statusBar->showMessage("Finished cmd <iAssignIp>");
@@ -255,19 +291,23 @@ void iface::handle_pushButton_5()
 #if (0)
 //    ./inject --upgrade --target="$IP" --id="$tID" --filename=$FILENAME --xml-data=cast.5428E.txt.xml
 #else
- q_tPRG_PARM.clear();
- q_tPRG_PARM.append("../trafinject-1/inject --upgrade --id=");
- q_tPRG_PARM.append(q_tID);
- q_tPRG_PARM.append(" --target=");
- q_tPRG_PARM.append(q_tIP);
- q_tPRG_PARM.append(" --xml-data=");
- q_tPRG_PARM.append(q_tXML);
- q_tPRG_PARM.append(" --filename=");
- q_tPRG_PARM.append(q_tFILE);
+    _get_real_data();
+    q_tPRG_PARM.clear();
+    q_tPRG_PARM.append("../trafinject-1/inject --upgrade --id=");
+    q_tPRG_PARM.append(q_tID);
+    q_tPRG_PARM.append(" --target=");
+    q_tPRG_PARM.append(q_tIP);
+    q_tPRG_PARM.append(" --xml-data=");
+    q_tPRG_PARM.append(q_tXML);
+    q_tPRG_PARM.append(" --filename=");
+    q_tPRG_PARM.append(q_tFILE);
 #endif /* (0) */
 
+
+    // lauch program, and collect STDOUT
     c.init(q_tPRG_PARM);
 
+    ui->textBrowser->clear();
     ui->textBrowser->append(QString(c.data));
 
     //ui->statusBar->showMessage("Finished cmd <iUpgradeFirmware>");
@@ -282,19 +322,23 @@ void iface::handle_pushButton_6()
 #if (0)
 //    ./inject --ACL --id="$tID" --target="$IP" --acl-data="$ACL_GRP" --xml-data=cast.5428E.txt.xml
 #else
- q_tPRG_PARM.clear();
- q_tPRG_PARM.append("../trafinject-1/inject --ACL --id=");
- q_tPRG_PARM.append(q_tID);
- q_tPRG_PARM.append(" --target=");
- q_tPRG_PARM.append(q_tIP);
- q_tPRG_PARM.append(" --xml-data=");
- q_tPRG_PARM.append(q_tXML);
- q_tPRG_PARM.append(" --acl-data=");
- q_tPRG_PARM.append(q_tACL);
+    _get_real_data();
+    q_tPRG_PARM.clear();
+    q_tPRG_PARM.append("../trafinject-1/inject --ACL --id=");
+    q_tPRG_PARM.append(q_tID);
+    q_tPRG_PARM.append(" --target=");
+    q_tPRG_PARM.append(q_tIP);
+    q_tPRG_PARM.append(" --xml-data=");
+    q_tPRG_PARM.append(q_tXML);
+    q_tPRG_PARM.append(" --acl-data=");
+    q_tPRG_PARM.append(q_tACL);
 #endif /* (0) */
 
+
+    // lauch program, and collect STDOUT
     c.init(q_tPRG_PARM);
 
+    ui->textBrowser->clear();
     ui->textBrowser->append(QString(c.data));
 
     //ui->statusBar->showMessage("Finished cmd <iAclGroup>");
@@ -309,6 +353,7 @@ void iface::handle_pushButton_7()
 #if (0)
 //     ./inject --save --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml
 #else
+    _get_real_data();
     q_tPRG_PARM.clear();
     q_tPRG_PARM.append("../trafinject-1/inject --save --id=");
     q_tPRG_PARM.append(q_tID);
@@ -318,8 +363,11 @@ void iface::handle_pushButton_7()
     q_tPRG_PARM.append(q_tXML);
 #endif /* (0) */
 
+
+    // lauch program, and collect STDOUT
     c.init(q_tPRG_PARM);
 
+    ui->textBrowser->clear();
     ui->textBrowser->append(QString(c.data));
 
     //ui->statusBar->showMessage("Finished cmd <iSaveSite>");
@@ -334,6 +382,7 @@ void iface::handle_pushButton_8()
 #if (0)
 // ./inject --reboot --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml
 #else
+    _get_real_data();
     q_tPRG_PARM.clear();
     q_tPRG_PARM.append("../trafinject-1/inject --reboot --id=");
     q_tPRG_PARM.append(q_tID);
@@ -343,8 +392,10 @@ void iface::handle_pushButton_8()
     q_tPRG_PARM.append(q_tXML);
 #endif /* (0) */
 
+    // lauch program, and collect STDOUT
     c.init(q_tPRG_PARM);
 
+    ui->textBrowser->clear();
     ui->textBrowser->append(QString(c.data));
 
     //ui->statusBar->showMessage("Finished cmd <iRebootSwitch>");
@@ -353,12 +404,14 @@ void iface::handle_pushButton_8()
 
 void iface::handle_pushButtonExit()
 {
+    this->close();
+}
 
 
- //exit(0);
- this->close();
-
-
+void iface::handle_pushButtonClear()
+{
+    c.data.clear();
+    ui->textBrowser->clear();
 }
 
 
