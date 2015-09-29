@@ -42,31 +42,6 @@ Controller c;
 
 
 
-/*
-
-(DONE)./inject --open --target="$IP" --xml-data=cast.5428E.txt.xml>$TMP_NAME
-
-(DONE)./inject --close --target="$IP" --xml-data=cast.5428E.txt.xml
-
-    ./inject --upgrade --target="$IP" --id="$tID" --filename=$FILENAME --xml-data=cast.5428E.txt.xml
-
-    ./inject --create --id="$tID" --target="$IP" --community="$SNMP_GRP"  --xml-data=cast.5428E.txt.xml
-
-
-    ./inject --reboot --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml
-
-    ./inject --ACL --id="$tID" --target="$IP" --acl-data="$ACL_GRP" --xml-data=cast.5428E.txt.xml
-
-    ./inject --ipassign --id="$tID" --target="$IP" --ip-addr="$4" --ip-mask="$5" --xml-data=cast.5428E.txt.xml
-
-    ./inject --save --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml
-*/
-
-
-/*
-nmap -n -sP 192.168.0.0/24 | awk '/Nmap scan report/{printf $5;printf " ";getline;getline;print $3;}'
-/opt/Qt5_5_0/Tools/QtCreator/bin/qtcreator &
-*/
 
 QString q_tID;
 QString q_tIP;

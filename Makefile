@@ -896,11 +896,13 @@ iface.o: iface.cpp iface.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qinputmethod.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QButtonGroup \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QGroupBox \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qgroupbox.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qframe.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QHeaderView \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qheaderview.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qabstractitemview.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qframe.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtCore/qabstractitemmodel.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtCore/qitemselectionmodel.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qabstractitemdelegate.h \
@@ -913,6 +915,12 @@ iface.o: iface.cpp iface.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qstyle.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qtabbar.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qrubberband.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QLineEdit \
+		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qlineedit.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextcursor.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextformat.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qpen.h \
+		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextoption.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QMenuBar \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qmenubar.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qmenu.h \
@@ -925,10 +933,6 @@ iface.o: iface.cpp iface.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qtextbrowser.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qtextedit.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextdocument.h \
-		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextoption.h \
-		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5_5_0/5.5/gcc/include/QtGui/qpen.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QToolBar \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/qtoolbar.h \
 		/opt/Qt5_5_0/5.5/gcc/include/QtWidgets/QWidget
