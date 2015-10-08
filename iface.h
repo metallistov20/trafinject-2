@@ -85,6 +85,11 @@ private slots:
     void handle_pushButton_6();
     void handle_pushButton_7();
     void handle_pushButton_8();
+    void handle_pushButton_9();
+    void handle_pushButton_10();
+    void handle_pushButton_11();
+    void handle_pushButton_12();
+    void handle_pushButton_13();
 
     void handle_pushButtonExit();    
     void handle_pushButtonClear();

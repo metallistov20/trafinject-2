@@ -14,24 +14,50 @@ iface::iface(QWidget *parent) :
 {
     ui->setupUi(this);
 
+     // Open
      connect(ui->pushButton, SIGNAL (released()), this, SLOT (handle_pushButton()));
 
+     // Close
      connect(ui->pushButton_2, SIGNAL (released()), this, SLOT (handle_pushButton_2()));
 
+     // Create SNMP
      connect(ui->pushButton_3, SIGNAL (released()), this, SLOT (handle_pushButton_3()));
 
+     // Assign IPv4
      connect(ui->pushButton_4, SIGNAL (released()), this, SLOT (handle_pushButton_4()));
 
+     // Upgrade firmware
      connect(ui->pushButton_5, SIGNAL (released()), this, SLOT (handle_pushButton_5()));
 
+     // Create ACL group
      connect(ui->pushButton_6, SIGNAL (released()), this, SLOT (handle_pushButton_6()));
 
+     // Save changes
      connect(ui->pushButton_7, SIGNAL (released()), this, SLOT (handle_pushButton_7()));
 
+     // Reboot HW
      connect(ui->pushButton_8, SIGNAL (released()), this, SLOT (handle_pushButton_8()));
 
+     // Port filter
+     connect(ui->pushButton_9,  SIGNAL (released()), this, SLOT (handle_pushButton_9()));
+
+     // Ping
+     connect(ui->pushButton_10, SIGNAL (released()), this, SLOT (handle_pushButton_10()));
+
+     // Tracert
+     connect(ui->pushButton_11, SIGNAL (released()), this, SLOT (handle_pushButton_11()));
+
+     // Cable test
+     connect(ui->pushButton_12, SIGNAL (released()), this, SLOT (handle_pushButton_12()));
+
+     // Loopback
+     connect(ui->pushButton_13, SIGNAL (released()), this, SLOT (handle_pushButton_13()));
+
+
+     // Exit
      connect(ui->pushButtonExit, SIGNAL (released()), this, SLOT (handle_pushButtonExit()));
 
+     // Clear buff.
      connect(ui->pushButtonClear, SIGNAL (released()), this, SLOT (handle_pushButtonClear()));
 
      _do_default_data();
@@ -112,7 +138,6 @@ void iface::_get_tID()
     QStringList list2 = c.data.split("var g_tid = ", QString::SkipEmptyParts);
 
     // only uin case array's second element is non empty
-    //dummy: if (list2.size() > 0)
     if (list2.size() > 1)
     {
         // Skip all by '012345678ABCDEF'
@@ -374,6 +399,150 @@ void iface::handle_pushButton_8()
     ui->textBrowser->append(QString(c.data));
 
     //ui->statusBar->showMessage("Finished cmd <iRebootSwitch>");
+    ui->statusBar->showMessage(q_tPRG_PARM);
+}
+
+void iface::handle_pushButton_9()
+{
+
+ ui->statusBar->showMessage("Running cmd <iMeta_x>, Port Filter");
+
+#if (0)
+// ./inject --pfilter --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml
+#else
+    _get_real_data();
+    q_tPRG_PARM.clear();
+    q_tPRG_PARM.append("../trafinject-1/inject --pfilter --id=");
+    q_tPRG_PARM.append(q_tID);
+    q_tPRG_PARM.append(" --target=");
+    q_tPRG_PARM.append(q_tIP);
+    q_tPRG_PARM.append(" --xml-data=");
+    q_tPRG_PARM.append(q_tXML);
+#endif /* (0) */
+
+    // lauch program, and collect STDOUT
+    c.init(q_tPRG_PARM);
+
+    ui->textBrowser->clear();
+    ui->textBrowser->append(QString(c.data));
+
+    //ui->statusBar->showMessage("Finished cmd <Port Filter>");
+    ui->statusBar->showMessage(q_tPRG_PARM);
+}
+
+void iface::handle_pushButton_10()
+{
+
+ ui->statusBar->showMessage("Running cmd <iMeta_x>, Ping");
+
+#if (0)
+// ./inject --ping --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml --proof=www.speedtest.net
+#else
+    _get_real_data();
+    q_tPRG_PARM.clear();
+    q_tPRG_PARM.append("../trafinject-1/inject --ping --id=");
+    q_tPRG_PARM.append(q_tID);
+    q_tPRG_PARM.append(" --target=");
+    q_tPRG_PARM.append(q_tIP);
+    q_tPRG_PARM.append(" --xml-data=");
+    q_tPRG_PARM.append(q_tXML);
+    // --proof
+    // q_tProof
+#endif /* (0) */
+
+    // lauch program, and collect STDOUT
+    c.init(q_tPRG_PARM);
+
+    ui->textBrowser->clear();
+    ui->textBrowser->append(QString(c.data));
+
+    //ui->statusBar->showMessage("Finished cmd <Ping>");
+    ui->statusBar->showMessage(q_tPRG_PARM);
+}
+
+void iface::handle_pushButton_11()
+{
+
+ ui->statusBar->showMessage("Running cmd <iMeta_x>, Tracert");
+
+#if (0)
+// ./inject --tracert --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml --proof=www.speedtest.net
+#else
+    _get_real_data();
+    q_tPRG_PARM.clear();
+    q_tPRG_PARM.append("../trafinject-1/inject --tracert --id=");
+    q_tPRG_PARM.append(q_tID);
+    q_tPRG_PARM.append(" --target=");
+    q_tPRG_PARM.append(q_tIP);
+    q_tPRG_PARM.append(" --xml-data=");
+    q_tPRG_PARM.append(q_tXML);
+    // --proof
+    // q_tProof
+#endif /* (0) */
+
+    // lauch program, and collect STDOUT
+    c.init(q_tPRG_PARM);
+
+    ui->textBrowser->clear();
+    ui->textBrowser->append(QString(c.data));
+
+    //ui->statusBar->showMessage("Finished cmd <Tracert>");
+    ui->statusBar->showMessage(q_tPRG_PARM);
+}
+
+void iface::handle_pushButton_12()
+{
+
+ ui->statusBar->showMessage("Running cmd <iMeta_x>, Cable Test");
+
+#if (0)
+// ./inject --cable --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml
+#else
+    _get_real_data();
+    q_tPRG_PARM.clear();
+    q_tPRG_PARM.append("../trafinject-1/inject --cable --id=");
+    q_tPRG_PARM.append(q_tID);
+    q_tPRG_PARM.append(" --target=");
+    q_tPRG_PARM.append(q_tIP);
+    q_tPRG_PARM.append(" --xml-data=");
+    q_tPRG_PARM.append(q_tXML);
+#endif /* (0) */
+
+    // lauch program, and collect STDOUT
+    c.init(q_tPRG_PARM);
+
+    ui->textBrowser->clear();
+    ui->textBrowser->append(QString(c.data));
+
+    //ui->statusBar->showMessage("Finished cmd <Cable Test>");
+    ui->statusBar->showMessage(q_tPRG_PARM);
+}
+
+void iface::handle_pushButton_13()
+{
+
+ ui->statusBar->showMessage("Running cmd <iMeta_x>, Loopback");
+
+#if (0)
+// ./inject --loopback --id="$tID" --target="$IP" --xml-data=cast.5428E.txt.xml
+#else
+    _get_real_data();
+    q_tPRG_PARM.clear();
+    q_tPRG_PARM.append("../trafinject-1/inject --loopback --id=");
+    q_tPRG_PARM.append(q_tID);
+    q_tPRG_PARM.append(" --target=");
+    q_tPRG_PARM.append(q_tIP);
+    q_tPRG_PARM.append(" --xml-data=");
+    q_tPRG_PARM.append(q_tXML);
+#endif /* (0) */
+
+    // lauch program, and collect STDOUT
+    c.init(q_tPRG_PARM);
+
+    ui->textBrowser->clear();
+    ui->textBrowser->append(QString(c.data));
+
+    //ui->statusBar->showMessage("Finished cmd <Loopback>");
     ui->statusBar->showMessage(q_tPRG_PARM);
 }
 

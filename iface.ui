@@ -207,7 +207,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Aux BTN #2</string>
+      <string>Ping</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_11">
@@ -220,7 +220,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Aux BTN #3</string>
+      <string>Tracert</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_12">
@@ -233,7 +233,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Aux BTN #4</string>
+      <string>Cable Test</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_13">
@@ -246,7 +246,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Aux BTN #5</string>
+      <string>Loopback</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_7">
@@ -272,7 +272,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Aux BTN #1</string>
+      <string>Port Filter</string>
      </property>
     </widget>
     <widget class="QTextBrowser" name="textBrowser">
